@@ -7,89 +7,89 @@ import java.util.Scanner;
     	public class main {
     	    public static void main(String[] args) {
     	        
-    	    	persona persona1 = new persona();
-    	    	persona persona2 = new persona();        
-    	    	persona persona3 = new persona();
-    	    	persona persona4 = new persona();
+    	    	persona persona_1 = new persona();
+    	    	persona persona_2 = new persona();        
+    	    	persona persona_3 = new persona();
+    	    	persona persona_4 = new persona();
     	        Scanner sc = new Scanner(System.in);
     	        
     	        
     	        System.out.println(" Persona 1");
-    	        System.out.print("Ingrese nombre: ");
-    	        persona1.nombre = sc.next();
-    	        System.out.print("Ingrese apellido: ");
-    	        persona1.apellido = sc.next();
-    	        System.out.print("Ingrese cedula de indentidad: ");
+    	        System.out.print("Ingrese el nombre: ");
+    	        persona_1.nombre = sc.next();
+    	        System.out.print("Ingrese su apellido: ");
+    	        persona_1.apellido = sc.next();
+    	        System.out.print("Ingrese su cedula de indentidad: ");
     	        persona1.cedulaIdentidad = sc.next();
-    	        System.out.print("Ingrese edad: ");
-    	        persona1.fechaNacimiento = sc.nextInt();
+    	        System.out.print("Ingrese su edad: ");
+    	        persona_1.fechaNacimiento = sc.nextInt();
     	        System.out.print("Ingrese telefono: ");
     	        persona1.telefono = sc.next();
-    	        System.out.print("Ingrese lugar de residencia: ");
-    	        persona1.lugarResidencia = sc.next();
+    	        System.out.print("Ingrese su lugar de residencia: ");
+    	        persona_1.lugarResidencia = sc.next();
     	        System.out.print("Ingrese 1=soltero 2=casado:: ");
-    	        persona1.casado = sc.nextInt();
+    	        persona_1.casado = sc.nextInt();
     	       
     	        System.out.println("\nPersona 2");
-    	        System.out.print("Ingrese nombre: ");
-    	        persona2.nombre = sc.next();
+    	        System.out.print("Ingrese el nombre: ");
+    	        persona_2.nombre = sc.next();
     	        System.out.print("Ingrese apellido: ");
-    	        persona2.apellido = sc.next();
-    	        System.out.print("Ingrese cedula de indentidad: ");
-    	        persona2.cedulaIdentidad = sc.next();
+    	        persona_2.apellido = sc.next();
+    	        System.out.print("Ingrese su cedula de indentidad: ");
+    	        persona_2.cedulaIdentidad = sc.next();
     	        System.out.print("Ingrese edad: ");
     	        persona2.fechaNacimiento = sc.nextInt();
-    	        System.out.print("Ingrese telefono: ");
-    	        persona2.telefono = sc.next();
-    	        System.out.print("Ingrese lugar de residencia: ");
-    	        persona2.lugarResidencia = sc.next();
+    	        System.out.print("Ingrese su telefono: ");
+    	        persona_2.telefono = sc.next();
+    	        System.out.print("Ingrese  el lugar de su residencia: ");
+    	        persona_2.lugarResidencia = sc.next();
     	        System.out.print("Ingrese 1=soltero 2=casado:: ");
-    	        persona2.casado = sc.nextInt();
+    	        persona_2.casado = sc.nextInt();
     	       
     	        System.out.println("\nPersona 3");
     	        System.out.print("Ingrese nombre: ");
-    	        persona3.nombre = sc.next();
+    	        persona_3.nombre = sc.next();
     	        System.out.print("Ingrese apellido: ");
-    	        persona3.apellido = sc.next();
+    	        persona_3.apellido = sc.next();
     	        System.out.print("Ingrese cedula de indentidad: ");
-    	        persona3.cedulaIdentidad = sc.next();
+    	        persona_3.cedulaIdentidad = sc.next();
     	        System.out.print("Ingrese edad: ");
-    	        persona3.fechaNacimiento = sc.nextInt();
+    	        persona_3.fechaNacimiento = sc.nextInt();
     	        System.out.print("Ingrese telefono: ");
-    	        persona3.telefono = sc.next();
+    	        persona_3.telefono = sc.next();
     	        System.out.print("Ingrese lugar de residencia: ");
-    	        persona3.lugarResidencia = sc.next();
+    	        persona_3.lugarResidencia = sc.next();
     	        System.out.print("Ingrese 1=soltero 2=casado: ");
-    	        persona3.casado = sc.nextInt();
+    	        persona_3.casado = sc.nextInt();
     	   
     	        System.out.println("\nPersona 4");
-    	        System.out.print("Ingrese nombre: ");
-    	        persona4.nombre = sc.next();
+    	        System.out.print("Ingrese el nombre: ");
+    	        persona_4.nombre = sc.next();
     	        System.out.print("Ingrese apellido: ");
-    	        persona4.apellido = sc.next();
-    	        System.out.print("Ingrese cedula de indentidad: ");
-    	        persona4.cedulaIdentidad = sc.next();
-    	        System.out.print("Ingrese edad: ");
-    	        persona4.fechaNacimiento = sc.nextInt();
+    	        persona_4.apellido = sc.next();
+    	        System.out.print("Ingrese su cedula de indentidad: ");
+    	        persona_4.cedulaIdentidad = sc.next();
+    	        System.out.print("Ingrese su  edad: ");
+    	        persona_4.fechaNacimiento = sc.nextInt();
     	        System.out.print("Ingrese telefono: ");
-    	        persona4.telefono = sc.next();
-    	        System.out.print("Ingrese lugar de residencia: ");
-    	        persona4.lugarResidencia = sc.next();
+    	        persona_4.telefono = sc.next();
+    	        System.out.print("Ingrese su lugar de residencia: ");
+    	        persona_4.lugarResidencia = sc.next();
     	        System.out.print("Ingrese 1=soltero 2=casado: ");
-    	        persona4.casado = sc.nextInt();
+    	        persona_4.casado = sc.nextInt();
     	     
-    	        System.out.println("\nLas personas que viven en Esmeraldas son mayores a 30 años y casados son:");
-    	        if(persona1.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona1.fechaNacimiento >= 30 && persona1.casado == 2){
+    	        System.out.println("Personas que viven en Esmeraldas y son mayores a 30 años casados son: ");
+    	        if(persona_1.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona_1.fechaNacimiento >= 30 && persona_1.casado == 1){
     	            System.out.println(persona1.nombre + " " + persona1.apellido);
     	        }
-    	        if(persona2.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona2.fechaNacimiento >= 30 && persona2.casado == 2){
-    	            System.out.println(persona2.nombre + " " + persona2.apellido);
+    	        if(persona_2.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona_2.fechaNacimiento >= 30 && persona_2.casado == 1){
+    	            System.out.println(persona_2.nombre + " " + persona_2.apellido);
     	        }
-    	        if(persona3.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona3.fechaNacimiento >= 30 && persona3.casado == 2){
-    	            System.out.println(persona3.nombre + " " + persona3.apellido);
+    	        if(persona_3.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona_3.fechaNacimiento >= 30 && persona_3.casado == 1){
+    	            System.out.println(persona_3.nombre + " " + persona_3.apellido);
     	        }
-    	        if(persona4.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona4.fechaNacimiento >= 30 && persona4.casado == 2){
-    	            System.out.println(persona4.nombre + " " + persona4.apellido);
+    	        if(persona_4.lugarResidencia.equalsIgnoreCase("Esmeraldas") && persona_4.fechaNacimiento >= 30 && persona_4.casado == 1){
+    	            System.out.println(persona_4.nombre + " " + persona_4.apellido);
     	        }
     	    }
     	} 
