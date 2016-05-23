@@ -17,7 +17,7 @@ public class opcion {
 			JOptionPane.showMessageDialog(null, "Puedes descansar");
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "NO puedes descansar");
+			JOptionPane.showMessageDialog(null, "No puedes descansar");
 		}
 	}
 	
