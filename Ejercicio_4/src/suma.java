@@ -15,7 +15,7 @@ public class suma {
 		public void sumar(){ 
 		 for(int i=0 ;i<4;i++){
 			 for(int x=0;x<4;x++){
-				 if(i!=x && arr[i]==arr[x]){
+				 if(i!=x && arr[i]==arr[x] || arr[0]==arr[1] && arr[1]==arr[3] ){
 					 arr[i]=0;
 					 arr[x]=0;
 				 }
