@@ -11,10 +11,10 @@ String cadena2,cadena3;
  }
  
  public void mayuscula(){
-	 int aux = cadena1.length(); 
-	 
+	 int aux;
+	 aux= cadena1.length(); 
 	 if(aux < 3){
-		 cadena1.toUpperCase(); 
+		 JOptionPane.showMessageDialog(null,cadena1.toUpperCase() );
 	 }else{
 		 cadena2 = cadena1.substring(0,cadena1.length()-3); 
 		 cadena3 = cadena1.substring(cadena1.length()-3); 
