@@ -72,9 +72,16 @@ public class matriz {
 
 
 
-		System.out.print( "—————————–"+"\n");
+		System.out.print( "Ascendente"+"\n");
 			for(int i=0; i<filas; i++){
 				for(int j=0; j<columnas; j++){
+				System.out.print(arr [i][j]+"  ");
+			}
+			System.out.print( " "+"\n");
+		}
+			System.out.print( "Descendente"+"\n");
+			for(int i=0; i<filas; i++){
+				for(int j=columnas-1; j>=0; j--){
 				System.out.print(arr [i][j]+"  ");
 			}
 			System.out.print( " "+"\n");
