@@ -37,6 +37,7 @@ public class estudiante {
 	}
 	public float getNota() {
 		return nota;
+		
 	}
 	public void setNota(float nota) {
 		this.nota = nota;
@@ -50,6 +51,7 @@ public class estudiante {
 	
 	public void mostrar(){
 		System.out.println("Nombre: "+this.nombres+" | Matricula: "+this.matricula+" | Materia: "+this.materia+" | Nota parcial: "+this.nota+" | Nota examen: "+this.exa); 
+		
 	}
 	
 	public void aprobados(){
