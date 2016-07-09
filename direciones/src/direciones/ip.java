@@ -45,7 +45,7 @@ public class ip implements inter_ip {
 		pos=0;
 		cont=0; 
 		}
-		
+		int acu=0;
 		for(int f=0;f<k;f++){ 
 			d=0;
 			aux=list[f];
@@ -53,6 +53,7 @@ public class ip implements inter_ip {
 			for(int t=0;t<k;t++){ 
 	    	if(aux.equals(list[t])){
 	    		d++;
+	    		
 	    		for(int o=0;o<aux.length();o++){
 	    		if(aux.substring(o,o+1).equals(" ")){
 	    		 ip1=aux.substring(0,o);
@@ -66,8 +67,6 @@ public class ip implements inter_ip {
 		System.out.println(h+") "+"Ip:"+ip1+" Intentos: "+d+" Fecha: "+fecha1);
 		}
 	    }
-		 
-	     
 		}catch(FileNotFoundException e){
 			JOptionPane.showMessageDialog(null, "NO EXISTE","ATENCION",JOptionPane.WARNING_MESSAGE);
 		}
