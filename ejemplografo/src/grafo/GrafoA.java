@@ -181,7 +181,7 @@ public class GrafoA<Type> extends GrafoNoPonderadoMA<Object>{
 		}
     }
 	
-	/* public ArrayList<String> recorridoProfunidad(String nodoI) {
+	 public ArrayList<String> recorridoProfunidad(String nodoI) {
    
 		 int pos= vertices.indexOf(nodoI); 
 		 //Lista donde guardo los nodos recorridos
@@ -226,14 +226,14 @@ public class GrafoA<Type> extends GrafoNoPonderadoMA<Object>{
 
 		        return recorridos;//Se devuelve el recorrido del grafo en profundidad
 
-		    }*/
+		    }
 	 
 	 public void mayoramenor(){
 		 int aux; 
-		 for(int i=0;i<this.matriz_adyacente.length;i++){
-			 for(int j=0;j<this.matriz_adyacente.length;j++){
-				 for(int x=0;x<this.matriz_adyacente.length;x++){
-					 for(int y=0;y<this.matriz_adyacente.length;y++){
+		 for(int i=0;i<5;i++){
+			 for(int j=0;j<5;j++){
+				 for(int x=0;x<5;x++){
+					 for(int y=0;y<5;y++){
 						 if(this.matriz_adyacente[i][j]>this.matriz_adyacente[x][y]){
 							 aux=this.matriz_adyacente[i][j];
 							 this.matriz_adyacente[i][j]=this.matriz_adyacente[x][y];
@@ -247,8 +247,9 @@ public class GrafoA<Type> extends GrafoNoPonderadoMA<Object>{
 		 for(int i=0;i<this.matriz_adyacente.length;i++){
 			 for(int j=0;j<this.matriz_adyacente.length;j++){
 				 if(this.matriz_adyacente[i][j]!=0)
-				System.out.println(this.matriz_adyacente[i][j]); 
+				System.out.print(this.matriz_adyacente[i][j]+" "); 
 			 }
+			 System.out.println(); 
 		 }
 	 }
 	 

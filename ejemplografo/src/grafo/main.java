@@ -14,25 +14,25 @@ public class main {
 		int[][] arcos_test = {  
 							{0,5,0,0,8},
 							{5,0,0,10,4},
-							{0,0,0,3,11},
+							{0,0,0,3,11},				
 							{0,10,3,0,6},
 							{8,4,11,6,0}
 						};
-		//ArrayList<Integer> enProfundidad=grafo.recorridoProfunidad("a");//Nodo inicial 0
+		ArrayList<String> enProfundidad=grafo.recorridoProfunidad("a");//Nodo inicial 0
 
         System.out.println("");
 
         System.out.println("Recorrido en profundidad de un grafo representado como matriz: ");
 
-       // for(int i=0;i<enProfundidad.size();i++){
+        for(int i=0;i<enProfundidad.size();i++){
 
-        //    System.out.println(""+enProfundidad.get(i)+"");
+            System.out.println(""+enProfundidad.get(i)+"");
 
-       // }
+       }
 		
 		grafo.InsertarVertice(vertices_test);
 		grafo.InsertarArco(arcos_test);
-		grafo.AislarVertice("a");
+		//grafo.AislarVertice("a");
 		System.out.println("Num vertices->"+grafo.NumeroDeVertices());
 		System.out.println("Num arcos   ->"+grafo.NumeroDeArcos());
 		System.out.println("Es completa ->"+grafo.Completo());

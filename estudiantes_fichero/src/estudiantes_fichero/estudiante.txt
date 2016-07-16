@@ -1,0 +1,4 @@
+Anthony Hernandez 9846 P.O.O 28.0 15.0 
+Aaron Marchan 9540 Ecuaciones 10.0 15.0 
+Johanna Choez 9046 Diseño 20.0 9.0 
+Genesis Burgos 9944 Estructura 10.0 20.0 
