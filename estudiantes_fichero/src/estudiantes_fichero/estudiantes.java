@@ -1,24 +1,16 @@
 package estudiantes_fichero;
 
-import java.io.FileReader;   
+import java.io.FileReader;    
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;  
 import javax.swing.JOptionPane; 
 import java.io.PrintWriter;
+import java.util.Vector;
 import java.io.FileWriter;
 import java.io.File;
 
-import javax.xml.bind.Element;
-import javax.xml.parsers.*;
-import javax.xml.soap.Text;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 public class estudiantes  {
 	public  String matricula; 
 	public  String nombres; 
@@ -27,6 +19,19 @@ public class estudiantes  {
 	public  float exa;
 	public  float aux; 
 	public  float prom; 
+	
+
+    File archivo1 = null;
+    FileReader fr = null;
+    BufferedReader br = null;
+	File archivo = new File("estudiantes.txt");
+    String lineafichero = ""; //Cada linea del fichero.txt 
+    String codigo = ""; //Codigo a borrar 
+    String codigoLinea = ""; //Codigo de cada linea del fichero.txt 
+    Vector lineasAcopiar = new Vector(); //Vector para almacenar lineas a copiar 
+    FileWriter fw = null;
+    BufferedWriter bw = null;
+    
 	public estudiantes(String nombres,String matricula,String materia,float nota_parcial,float exa){
 		this.nombres=nombres;
 		this.matricula=matricula;
@@ -40,12 +45,17 @@ public class estudiantes  {
 
 	public void menu() throws IOException{
 		int op ;
+		int cont=0; 
 		String nuevo = null;
 		do{
 		op = Integer.parseInt(JOptionPane.showInputDialog("OP 1: Ingresar estudiante "+"\n"+"OP 2: Listar Estudiantes"+"\n"+"OP 3: Buscar estudiante por matricula"+"\n"+"OP 4: Editar informacion de estudiante"+"\n"+"OP 5: Mostrar estudiantes que aprueban"+"\n"+"OP 6: Guardar informacion"+"\n"+"OP 7: Exportar informacion a XML"+"\n"+"OP 8: Salir"));
 		switch (op){
 		case 1:
+		cont++;
+		if(cont==1)
 		nuevo=ingresar_estudiante(); 
+		else
+			JOptionPane.showMessageDialog(null,"LA INFORMACION NO HA SIDO GUARDADA","ERROR",JOptionPane.ERROR_MESSAGE);
 		break; 
 		case 2:
 		System.out.println("-----------------------------------------------LISTADO DE ESTUDIANTES--------------------------------------------");
@@ -62,6 +72,7 @@ public class estudiantes  {
 		estudiantes_aprobados(); 	
 		break; 
 		case 6:
+		cont=0;
 		if(nuevo!=null){
 		guardar(nuevo);
 		JOptionPane.showMessageDialog(null, "INFORMACION GUARDADA CON EXITO","ATENCION",JOptionPane.WARNING_MESSAGE); 
@@ -139,9 +150,10 @@ public class estudiantes  {
 		mostrar();
 		}
 	}
-	public void buscar_editar(String dato,String line, int aux) throws IOException{ 
+	public void buscar_editar(String dato) throws IOException{ 
 		int op;
 		int pos=0; 
+		String datos=null; 
 		String mod;
 		if (dato.equals(this.matricula)||dato.equals(this.nombres)){
 		System.out.println("-------------------------------------------------ESTUDIANTE BUSCADO-----------------------------------------------");		
@@ -151,7 +163,12 @@ public class estudiantes  {
 		switch(op){
 		case 1:
 			mod=JOptionPane.showInputDialog("Ingrese el nuevo nombre y apellido" );
-		    this.nombres=mod;
+			this.nombres=mod; 
+			datos=this.nombres+" "+this.matricula+this.materia+" "+this.nota_parcial+" "+this.exa+" ";
+			if(datos!=null){
+			guardar(datos);
+			datos=null; 
+			} 
 		    System.out.println("-----------------------------------------------Modificado--------------------------------------------");
 		    mostrar(); 
 		break;
@@ -188,24 +205,6 @@ public class estudiantes  {
 		}
 	}
 	
-	public void editar() throws IOException{
-		String dato= JOptionPane.showInputDialog("Ingrese el dato: ");
-		int aux=0;
-		try{
-			String ruta;
-			ruta = main.class.getResource("estudiante.txt").toString();
-			String ruta2=ruta.substring(6, ruta.length());
-			BufferedReader read = new BufferedReader(new FileReader(ruta2));
-			String line; 
-			while ((line=read.readLine())!= null){  
-				aux++; 
-				lectura_estudiantes(line,aux);
-				buscar_editar(dato,line,aux); 
-			}
-			}catch(FileNotFoundException e){
-				JOptionPane.showMessageDialog(null, "NO EXISTE","ATENCION",JOptionPane.WARNING_MESSAGE);
-			}
-	}
     
 	//Hace el proceso del buscar linea a linea 
 	public void buscar_estudiantes() throws IOException{
@@ -220,7 +219,8 @@ public class estudiantes  {
 			while ((line=read.readLine())!= null){  
 				aux++; 
 				lectura_estudiantes(line, aux);
-				buscar(matricula1); 
+				buscar(matricula1);
+				
 			}
 			}catch(FileNotFoundException e){
 				JOptionPane.showMessageDialog(null, "NO EXISTE","ATENCION",JOptionPane.WARNING_MESSAGE);
@@ -234,8 +234,7 @@ public class estudiantes  {
 			float aux2=0;
 			aux2=30-this.nota_parcial;
 			if(this.exa>=aux2)
-				System.out.println("Nombre: "+this.nombres+" | Matricula: "+this.matricula+" | Materia: "+this.materia+" | Nota parcial: "+this.nota_parcial+" | Nota examen: "+this.exa); 	
-			
+				System.out.println("Nombre: "+this.nombres+" | Matricula: "+this.matricula+" | Materia: "+this.materia+" | Nota parcial: "+this.nota_parcial+" | Nota examen: "+this.exa); 			
 		}
 	}
 	
@@ -256,6 +255,7 @@ public class estudiantes  {
 				JOptionPane.showMessageDialog(null, "NO EXISTE","ATENCION",JOptionPane.WARNING_MESSAGE);
 			}
 	}
+	
     public String ingresar_estudiante(){
     	String nombre = JOptionPane.showInputDialog("Ingrese nombre y apellido");
     	String matricula = JOptionPane.showInputDialog("Ingrese el numero de matricula");
@@ -265,22 +265,92 @@ public class estudiantes  {
     	
     	return nombre+" "+matricula+" "+materia+" "+n_p+" "+examen; 
     }
+    
 	public void guardar(String ingresado) throws IOException{
+			try{
+		    String ruta;
+			ruta = main.class.getResource("estudiante.txt").toString();
+			String ruta2=ruta.substring(6, ruta.length());
+			FileWriter escribir = new FileWriter(ruta2,true); 
+			PrintWriter edit = new PrintWriter(escribir);  
+			edit.println("\n"+ingresado);
+			edit.close();
+			escribir.close();
+			}
+			catch (Exception e){
+			}
+	}
+	
+	public  void editar() throws IOException{
+		int aux=0;
+		String dato= JOptionPane.showInputDialog("Ingrese el numero de matricula: ");
+		try{
 			String ruta;
 			ruta = main.class.getResource("estudiante.txt").toString();
 			String ruta2=ruta.substring(6, ruta.length());
-			FileWriter edit = new FileWriter(ruta2,true); 
-			edit.write("\n"+ingresado);
-			edit.close();
+			BufferedReader read = new BufferedReader(new FileReader(ruta2));
+			String line; 
+			while ((line=read.readLine())!= null){  
+				aux++; 
+				lectura_estudiantes(line, aux);
+				removeLineFromFile(line,ruta,dato);
+				buscar_editar(dato);
+				 
+			}
+			}catch(FileNotFoundException e){
+				JOptionPane.showMessageDialog(null, "NO EXISTE","ATENCION",JOptionPane.WARNING_MESSAGE);
+			}
 	}
-
-	public void modificar(String ingresado) throws IOException{
-		String ruta;
-		ruta = main.class.getResource("estudiante.txt").toString();
-		String ruta2=ruta.substring(6, ruta.length());
-		PrintWriter edit = new PrintWriter(ruta2); 
-		edit.write("\n"+ingresado);
-		edit.close();
+	
+	public void removeLineFromFile(String lineToRemove,String ruta,String dato) {
+		if (dato.equals(this.matricula)||dato.equals(this.nombres)){ 
+	    try {
+	 
+	        File inFile = new File(archivo.toString());
+	 
+	        if (!inFile.isFile()) {
+	            System.out.println("no hay file");
+	            return;
+	        }
+	 
+	        //Construct the new file that will later be renamed to the original filename.
+	        File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+	 
+	        BufferedReader br = new BufferedReader(new FileReader(archivo));
+	        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+	 
+	        String line = null;
+	 
+	        //Read from the original file and write to the new
+	        //unless content matches data to be removed.
+	        while ((line = br.readLine()) != null) {
+	 
+	            if (!line.trim().equals(lineToRemove)) {
+	 
+	                pw.println(line);
+	                pw.flush();
+	            }
+	        }
+	        pw.close();
+	        br.close();
+	 
+	        //Delete the original file
+	        if (!inFile.delete()) {
+	            System.out.println("Could not delete file");
+	            return;
+	        }
+	 
+	        //Rename the new file to the filename the original file had.
+	        if (!tempFile.renameTo(inFile)){
+	            System.out.println("Could not rename file");
+	 
+	        }
+	    } catch (FileNotFoundException ex) {
+	        ex.printStackTrace();
+	    } catch (IOException ex) {
+	        ex.printStackTrace();
+	    	}
+		}
+	}
 }
-
-}
+	

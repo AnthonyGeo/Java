@@ -1,0 +1,5 @@
+Ecuaciones,9091,Cedeno Karol,12.0,10.5
+Geometria,9092,Bautista Jennifer,10.0,10.5
+Aritmetica,9093,Pancracio Estacio,24.0,10.5
+Finanzas,9846,Anthony Hernandez,23.0,20.0
+Ecuaciones,7475,Matias Leandro,14.0,20.0

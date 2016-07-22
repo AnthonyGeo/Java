@@ -18,7 +18,7 @@ public class main {
 							{0,10,3,0,6},
 							{8,4,11,6,0}
 						};
-		ArrayList<String> enProfundidad=grafo.recorridoProfunidad("a");//Nodo inicial 0
+		/*ArrayList<String> enProfundidad=grafo.recorridoProfunidad("a");//Nodo inicial 0
 
         System.out.println("");
 
@@ -28,11 +28,11 @@ public class main {
 
             System.out.println(""+enProfundidad.get(i)+"");
 
-       }
+       }*/
 		
 		grafo.InsertarVertice(vertices_test);
 		grafo.InsertarArco(arcos_test);
-		//grafo.AislarVertice("a");
+		grafo.AislarVertice("a");
 		System.out.println("Num vertices->"+grafo.NumeroDeVertices());
 		System.out.println("Num arcos   ->"+grafo.NumeroDeArcos());
 		System.out.println("Es completa ->"+grafo.Completo());

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><Estudiantes>
+    <Estudiante>
+        <Matricula>9091</Matricula>
+        <Nombre>Cedeno Karol</Nombre>
+        <Materia>Ecuaciones</Materia>
+        <NotaParcial>12.0</NotaParcial>
+        <NotaExamen>10.5</NotaExamen>
+    </Estudiante>
+    <Estudiante>
+        <Matricula>9092</Matricula>
+        <Nombre>Bautista Jennifer</Nombre>
+        <Materia>Geometria</Materia>
+        <NotaParcial>10.0</NotaParcial>
+        <NotaExamen>10.5</NotaExamen>
+    </Estudiante>
+    <Estudiante>
+        <Matricula>9093</Matricula>
+        <Nombre>Pancracio Estacio</Nombre>
+        <Materia>Aritmetica</Materia>
+        <NotaParcial>24.0</NotaParcial>
+        <NotaExamen>10.5</NotaExamen>
+    </Estudiante>
+    <Estudiante>
+        <Matricula>9846</Matricula>
+        <Nombre>Anthony Hernandez</Nombre>
+        <Materia>Finanzas</Materia>
+        <NotaParcial>23.0</NotaParcial>
+        <NotaExamen>20.0</NotaExamen>
+    </Estudiante>
+    <Estudiante>
+        <Matricula>7475</Matricula>
+        <Nombre>Matias Leandro</Nombre>
+        <Materia>Ecuaciones</Materia>
+        <NotaParcial>14.0</NotaParcial>
+        <NotaExamen>20.0</NotaExamen>
+    </Estudiante>
+</Estudiantes>

@@ -181,7 +181,7 @@ public class GrafoA<Type> extends GrafoNoPonderadoMA<Object>{
 		}
     }
 	
-	 public ArrayList<String> recorridoProfunidad(String nodoI) {
+	 /*public ArrayList<String> recorridoProfunidad(String nodoI) {
    
 		 int pos= vertices.indexOf(nodoI); 
 		 //Lista donde guardo los nodos recorridos
@@ -226,7 +226,7 @@ public class GrafoA<Type> extends GrafoNoPonderadoMA<Object>{
 
 		        return recorridos;//Se devuelve el recorrido del grafo en profundidad
 
-		    }
+		    }*/
 	 
 	 public void mayoramenor(){
 		 int aux; 
