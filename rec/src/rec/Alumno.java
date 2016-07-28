@@ -7,7 +7,7 @@ package rec;
 
 /**
  *
- * @author Cristhian
+ * 
  */
 import java.io.Serializable;
 

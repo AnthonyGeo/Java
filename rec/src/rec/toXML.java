@@ -1,8 +1,6 @@
 package rec;
 
-
-
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 import java.io.FileReader;
 
 import javax.xml.parsers.ParserConfigurationException;
