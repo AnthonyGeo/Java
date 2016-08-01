@@ -1,0 +1,72 @@
+<list>
+<Alumno>
+	<matricula>4565</matricula>
+	<nombres>Maria Simisterra</nombres>
+	<direccion>Direccion</direccion>
+	<ciudad>Esmeraldas</ciudad>
+	<edad>20</edad>
+</Alumno>
+<Alumno>
+	<matricula>5698</matricula>
+	<nombres>Carlos Mideros</nombres>
+	<direccion>Barrio Alto</direccion>
+	<ciudad>Quininde</ciudad>
+	<edad>17</edad>
+</Alumno>
+<Alumno>
+	<matricula>9834</matricula>
+	<nombres>Fork Cevallos</nombres>
+	<direccion>Los Hermanos</direccion>
+	<ciudad>Esmeraldas</ciudad>
+	<edad>17</edad>
+</Alumno>
+<Alumno>
+	<matricula>8789</matricula>
+	<nombres>Tera Estupinan</nombres>
+	<direccion>Prado</direccion>
+	<ciudad>Guayaquil</ciudad>
+	<edad>23</edad>
+</Alumno>
+<Alumno>
+	<matricula>7412</matricula>
+	<nombres>Karla Quinonez</nombres>
+	<direccion>20 de Noviembre</direccion>
+	<ciudad>Esmeraldas</ciudad>
+	<edad>45</edad>
+</Alumno>
+<Alumno>
+	<matricula>4852</matricula>
+	<nombres>Marcos Lirios</nombres>
+	<direccion>Duran</direccion>
+	<ciudad>Guayaquil</ciudad>
+	<edad>43</edad>
+</Alumno>
+<Alumno>
+	<matricula>1245</matricula>
+	<nombres>Tatiana Garcia</nombres>
+	<direccion>Vista al mar</direccion>
+	<ciudad>Esmeraldas</ciudad>
+	<edad>16</edad>
+</Alumno>
+<Alumno>
+	<matricula>7452</matricula>
+	<nombres>Cesar Vidal</nombres>
+	<direccion>Los almendros</direccion>
+	<ciudad>Guayaquil</ciudad>
+	<edad>17</edad>
+</Alumno>
+<Alumno>
+	<matricula>3652</matricula>
+	<nombres>Karla Cantos</nombres>
+	<direccion>Nuevo amanecer</direccion>
+	<ciudad>Esmeraldas</ciudad>
+	<edad>42</edad>
+</Alumno>
+<Alumno>
+	<matricula>6385</matricula>
+	<nombres>Cristhian Bedolla</nombres>
+	<direccion>Los delfines</direccion>
+	<ciudad>Guayaquil</ciudad>
+	<edad>16</edad>
+</Alumno>
+</list>

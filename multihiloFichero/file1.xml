@@ -1,0 +1,16 @@
+<list>
+<Alumno>
+<matricula>4565</matricula>
+<nombres>Maria Simisterra</nombres>
+<direccion>Direccion</direccion>
+<ciudad>Esmeraldas</ciudad>
+<edad>20</edad>
+</Alumno>
+<Alumno>
+<matricula>5698</matricula>
+<nombres>Carlos Mideros</nombres>
+<direccion>Barrio Alto</direccion>
+<ciudad>Quininde</ciudad>
+<edad>17</edad>
+</Alumno>
+</list>

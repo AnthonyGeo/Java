@@ -1,0 +1,11 @@
+
+4565|Maria Simisterra|Direccion|Esmeraldas|20
+5698|Carlos Mideros|Barrio Alto|Quininde|17
+9834|Fork Cevallos|Los Hermanos|Esmeraldas|17
+8789|Tera Estupinan|Prado|Guayaquil|23
+7412|Karla Quinonez|20 de Noviembre|Esmeraldas|45
+4852|Marcos Lirios|Duran|Guayaquil|43
+1245|Tatiana Garcia|Vista al mar|Esmeraldas|16
+7452|Cesar Vidal|Los almendros|Guayaquil|17
+3652|Karla Cantos|Nuevo amanecer|Esmeraldas|42
+6385|Cristhian Bedolla|Los delfines|Guayaquil|16

@@ -3,14 +3,10 @@ package multihilo;
 public class main {
 
 	public static void main(String[] args) {
-		 
-		  
-		
-	
 		 Priority mt1 = new Priority("Hilo 1");
 		 Priority mt2 = new Priority("Hilo 2");
 		 // set the priorities
-		 mt1.thrd.setPriority(Thread.NORM_PRIORITY);
+		 mt1.thrd.setPriority(Thread.MAX_PRIORITY);
 		 mt2.thrd.setPriority(Thread.NORM_PRIORITY);
 		 // start the threads
 		 mt1.thrd.start();
