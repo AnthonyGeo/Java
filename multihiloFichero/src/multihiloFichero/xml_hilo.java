@@ -11,9 +11,20 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  
 public class xml_hilo implements Runnable {
 	
+	int count;
+	 Thread thrd;
+	 static boolean stop = false;
+	 static String currentName;
 	private Thread xml; 
 	private long t1;
 	private long t2;
+	
+	xml_hilo(String name) {
+		 thrd = new Thread(this, name);
+		 count = 0;
+		 currentName = name;
+		 }
+	
 	public void leer_xml(String nombre_xml) throws Exception{
 		
 		 String contenido_xml = "";
@@ -41,7 +52,13 @@ public class xml_hilo implements Runnable {
 			List lst_estudiante = new ArrayList();
 			lst_estudiante = (List) xstream.fromXML(contenido_xml);
 			Alumno a = new Alumno();
+			for(int i=0;i<10;i++){
+				a = (Alumno) lst_estudiante.get(i);
+				System.out.println("Matricula: "+a.getMatricula()+" Nombre: "+a.getNombres()+" Direccion: "+a.getDireccion()+" Ciudad: "+a.getCiudad()+" Edad: "+a.getEdad());
+					
+			}
 			System.out.println("-----------------------------------------Esmeraldas-------------------------------------------");
+
 			for(int i=0;i<10;i++){
 			a = (Alumno) lst_estudiante.get(i);
 			if(a.getCiudad().equals("Esmeraldas"))
@@ -58,6 +75,14 @@ public class xml_hilo implements Runnable {
 
 	
 	public void run() {
+		System.out.println(thrd.getName() + " Iniciando");
+		 do {
+		 count++;
+		 if(currentName.compareTo(thrd.getName()) != 0) {
+		 currentName = thrd.getName();
+		 	}
+		 }while(stop == false && count < 10000);
+		 stop = true;
 		t1= System.currentTimeMillis(); 
 		try {
 	    	leer_xml("file.xml"); 
