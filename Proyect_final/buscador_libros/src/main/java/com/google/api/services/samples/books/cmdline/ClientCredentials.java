@@ -26,7 +26,7 @@ package com.google.api.services.samples.books.cmdline;
  * the section at the bottom called "Simple API Access".
  * </p>
  * 
- * @author Ravi Mistry
+ * @author ANTHONY HERNANDEZ Y JOHANNA CHOEZ
  */
 public class ClientCredentials {
 
