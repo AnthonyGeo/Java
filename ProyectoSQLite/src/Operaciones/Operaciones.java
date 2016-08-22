@@ -9,7 +9,7 @@ package Operaciones;
 * @author Anthony Hernandez
 */
 
-import Objetos.Persona;  
+import Objetos.Persona;   
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -25,7 +25,8 @@ public class Operaciones extends Conexion{
         boolean valor = true;
         conectar();
         try {
-            consulta.executeUpdate(sql);
+        	consulta.executeUpdate(sql);
+            
         } catch (SQLException e) {
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -55,7 +56,7 @@ public class Operaciones extends Conexion{
         return resultado;
     }
 
-    public void guardarUsuario(Persona persona){
+    public void guardarUsuario(Persona persona){  
     	insertar("insert into Persona values("+persona.getId()
                     +",'"+persona.getnombre()
                     +"','"+persona.getedad()+"')");

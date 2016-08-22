@@ -1,11 +1,11 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this template, choose Tools | Templates 
  * and open the template in the editor.
  */
 package Operaciones;
 
 
-import java.sql.Connection; 
+import java.sql.Connection;  
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,13 +33,13 @@ public class Conexion{
 	        catch (ClassNotFoundException e) {
 	            JOptionPane.showMessageDialog(null, e.getMessage());
 	        }	 
-			try {
-				            
-                            conexion = DriverManager.getConnection("jdbc:sqlite:my_base_datos.db");
-                            consulta = conexion.createStatement();                           
-			} catch (SQLException e) {
-                            JOptionPane.showMessageDialog(null, e.getMessage());
-                        }
+			try {           
+                            conexion = DriverManager.getConnection("jdbc:sqlite:base.db");
+                            consulta = conexion.createStatement();
+                        	consulta.executeUpdate("create table Persona (id integer, nombre string, edad integer)");
+
+			} catch (SQLException e) {}
+			
+		  }
 	}
     
-}
