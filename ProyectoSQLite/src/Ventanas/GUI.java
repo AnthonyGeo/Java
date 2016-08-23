@@ -4,15 +4,17 @@
  */
 package Ventanas;
 
-import Objetos.Persona;  
+import Objetos.Persona;    
 import Operaciones.Operaciones;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -52,7 +54,10 @@ public class GUI extends javax.swing.JFrame {
         jTPersonas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
+        
+        
+        JButton btnActualizar = new JButton("Actualizar");
+        JButton btnNewButton_1 = new JButton("Consultar");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Id:");
@@ -65,6 +70,9 @@ public class GUI extends javax.swing.JFrame {
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
+                btnActualizar.setEnabled(false);
+        		jButton2.setEnabled(false);
+        		btnNewButton_1.setEnabled(false);
             }
         });
         
@@ -139,19 +147,47 @@ public class GUI extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTPersonas);
-
+        
+        
+        
         jButton1.setText("Llenar tabla");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+                jButton2.setEnabled(true);
+                btnActualizar.setEnabled(true);
+                btnNewButton_1.setEnabled(true);
+                
             }
         });
 
-        jButton2.setText("Eliminar todo");
+        jButton2.setText("Eliminar registro");
+        jButton2.setEnabled(false);
+        
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
+        });
+        
+        
+        btnNewButton_1.setEnabled(false);
+        btnNewButton_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		jbtnNewButton_1ActionPerformed(evt);
+        	}
+        });
+        
+        
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		jbtnActualizar_1ActionPerformed(evt);
+        		btnActualizar.setEnabled(false);
+        		jButton2.setEnabled(false);
+        		btnNewButton_1.setEnabled(false);
+        	        	       
+        	}
         });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -161,21 +197,27 @@ public class GUI extends javax.swing.JFrame {
         			.addContainerGap()
         			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+        					.addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
         					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
-        				.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
+        					.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
         			.addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        	jPanel2Layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(jPanel2Layout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
         			.addGap(11)
         			.addGroup(jPanel2Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jButton1)
-        				.addComponent(jButton2))
+        				.addComponent(jButton2)
+        				.addComponent(btnActualizar)
+        				.addComponent(btnNewButton_1))
         			.addContainerGap())
         );
         jPanel2.setLayout(jPanel2Layout);
@@ -214,7 +256,6 @@ public class GUI extends javax.swing.JFrame {
             
             operaciones.guardarUsuario(persona);
             JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO","AVISO",JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, "Para ver la informacion guardada \n"+"Dirijase al formulario <Lista de personas>\n"+"Y dele clic en el Boton <Llenar tabla>","AVISO",JOptionPane.INFORMATION_MESSAGE);
             limpiar();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null,"Error:"+ex.getMessage()+"\nVerifique");
@@ -226,14 +267,56 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int op = JOptionPane.showConfirmDialog(null, "¿Desea eliminar todos los registros de la base de datos?", "Atencion",JOptionPane.YES_NO_OPTION);
-    	if(op == JOptionPane.YES_NO_OPTION){
-        operaciones.insertar("delete from Persona");
+    	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a eliminar: "));
+    	if(operaciones.validar(id)==true){
+        int op = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro de la base de datos?", "Atencion",JOptionPane.YES_NO_OPTION);
+        if(op == JOptionPane.YES_NO_OPTION){
+        operaciones.insertar("delete from Persona where id="+id);
         operaciones.totalPersonas((DefaultTableModel)jTPersonas.getModel());
-        JOptionPane.showMessageDialog(null, "REGISTROS ELIMINADOS CON EXITO","AVISO",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Registro eliminado con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	}
+    	}
+    	else
+    		JOptionPane.showMessageDialog(null, "Registro no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private void jbtnNewButton_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a consulta: "));
+    	if(operaciones.validar(id)==true)
+    	operaciones.consultar1(Integer.toString(id));
+    	else
+    		JOptionPane.showMessageDialog(null, "Registro no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+   
+    
+    private void jbtnActualizar_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a Actualizar: "));
+    	int op;
+    	if(operaciones.validar(id)==true){
+    		
+    		op = Integer.parseInt(JOptionPane.showInputDialog("OP1: ID \n"+"OP2: NOMBRE \n"+"OP3: EDAD \n"));
+    		switch (op){
+    		case 1:
+    			int id_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nuevo id"));
+    			operaciones.insertar("UPDATE Persona SET id = "+id_1+" WHERE ID ="+ id);
+    			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
+    	    break;
+    		case 2:
+    			String name =JOptionPane.showInputDialog("Ingrese su nuevo nombre");
+    			operaciones.insertar("UPDATE Persona SET nombre = "+"'"+name+"'"+" WHERE ID ="+ id);
+    			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
+    		break;
+    		case 3:
+    			int edad_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nueva edad"));
+    			operaciones.insertar("UPDATE Persona SET edad = "+edad_1+" WHERE ID ="+ id);
+    			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
+    	    break;
+    		}	
+    	}
+    	
+    	else
+    		JOptionPane.showMessageDialog(null, "Registro no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+   
     /**
      * @param args the command line arguments
      */

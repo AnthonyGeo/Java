@@ -9,7 +9,7 @@ package Operaciones;
 * @author Anthony Hernandez
 */
 
-import Objetos.Persona;   
+import Objetos.Persona;    
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -29,7 +29,7 @@ public class Operaciones extends Conexion{
             
         } catch (SQLException e) {
                 valor = false;
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                
             }      
         finally{  
             try{    
@@ -100,6 +100,71 @@ public class Operaciones extends Conexion{
              e.printStackTrace();
          }
      }
+    }
+    
+    public void consultar1(String id_1){
+        ResultSet resultado = null;
+        
+        String sql = "select * from Persona where id=";
+        try {
+            resultado = consultar(sql+id_1);
+            
+                while(resultado.next()){
+                	 JOptionPane.showMessageDialog(null,("Nombre = " + resultado.getString("nombre")+"\n"+("Id = " + resultado.getInt("id")+"\n"+("Edad = " + resultado.getInt("edad")))));
+                    
+                }
+            
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+         try
+         {
+             consulta.close();
+             conexion.close();
+             if(resultado != null){
+                resultado.close();
+             }
+         }
+         catch (Exception e)
+         {
+             e.printStackTrace();
+         }
+     }
+    }
+    
+    
+	public boolean validar(int id){
+        
+        ResultSet resultado = null;
+        conectar();
+        try {
+            resultado = consultar("select * from Persona where id="+id);
+        	
+        	 while(resultado.next()){
+        		 if(id==resultado.getInt("id")){
+        			 return true;
+        		 }
+        		 else
+        			 return false; 
+        	 }
+            
+        } catch (SQLException e) {                
+            }      
+        finally{  
+            try{    
+                 consulta.close();  
+                 conexion.close(); 
+                 if(resultado != null){
+                     resultado.close();
+                  }
+             }catch (Exception e){                 
+                 e.printStackTrace();  
+             }  
+        }
+		return false;
+        
     }
     
 }

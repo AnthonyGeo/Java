@@ -27,7 +27,9 @@ public class Sample {
 	      statement.executeUpdate("insert into person values(3, 'Piero',21)");
 	      statement.executeUpdate("insert into person values(4, 'Aaron',14)");
 	      statement.executeUpdate("insert into person values(5, 'Genesis',17)");
-	      ResultSet rs = statement.executeQuery("select * from person");
+	      ResultSet rs = statement.executeQuery("select * from person where id=1");
+	       
+	      
 	      while(rs.next())
 	      {
 	        // read the result set
@@ -40,7 +42,7 @@ public class Sample {
 	    {
 	      // if the error message is "out of memory", 
 	      // it probably means no database file is found
-	      System.err.println(e.getMessage());
+	      //System.err.println(e.getMessage());
 	    }
 	    finally
 	    {
