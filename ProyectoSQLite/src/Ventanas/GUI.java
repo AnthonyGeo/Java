@@ -17,13 +17,16 @@ import java.awt.event.ActionListener;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author Anthony Hernandez
  */
 public class GUI extends javax.swing.JFrame {
-    Operaciones operaciones;
+	
+	//public int c=0;
+	Operaciones operaciones;
     /**
      * Creates new form GUI
      */
@@ -73,6 +76,7 @@ public class GUI extends javax.swing.JFrame {
                 btnActualizar.setEnabled(false);
         		jButton2.setEnabled(false);
         		btnNewButton_1.setEnabled(false);
+        		jButton1.setEnabled(true);
             }
         });
         
@@ -86,10 +90,18 @@ public class GUI extends javax.swing.JFrame {
         		
         	}
         });
+        
+        JButton btnNewButton_2 = new JButton("");
+        btnNewButton_2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		JOptionPane.showMessageDialog(null, "Autor: Anthony Hernandez \n"+"Pontificia Universidad Catolica del Ecuador Sede Esmeraldas \n"+"Derechos de autor reservados \n"+"Anthony Company S.A","Info",JOptionPane.INFORMATION_MESSAGE);
+        	}
+        });
+        btnNewButton_2.setIcon(new ImageIcon("F:\\P.O.O\\Java_clase\\ProyectoSQLite\\botoninfo.jpg"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        	jPanel1Layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel1Layout.createSequentialGroup()
@@ -100,14 +112,16 @@ public class GUI extends javax.swing.JFrame {
         						.addComponent(jLabel3))
         					.addGap(18)
         					.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(jTFedad, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-        						.addComponent(jTFId, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-        						.addComponent(jTFnombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)))
+        						.addComponent(jTFedad, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+        						.addComponent(jTFId, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+        						.addComponent(jTFnombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)))
         				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addGap(122)
         					.addComponent(jBGuardar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
         					.addGap(60)
-        					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)))
+        					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+        					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,11 +139,17 @@ public class GUI extends javax.swing.JFrame {
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel3)
         				.addComponent(jTFedad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGap(54)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jBGuardar)
-        				.addComponent(btnNewButton))
-        			.addContainerGap(795, Short.MAX_VALUE))
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(54)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jBGuardar)
+        						.addComponent(btnNewButton))
+        					.addContainerGap(58, Short.MAX_VALUE))
+        				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+        					.addGap(30))))
         );
         jPanel1.setLayout(jPanel1Layout);
 
@@ -150,10 +170,11 @@ public class GUI extends javax.swing.JFrame {
         
         
         
-        jButton1.setText("Llenar tabla");
+        jButton1.setText("Cargar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+                jButton1.setEnabled(false);
                 jButton2.setEnabled(true);
                 btnActualizar.setEnabled(true);
                 btnNewButton_1.setEnabled(true);
@@ -182,11 +203,7 @@ public class GUI extends javax.swing.JFrame {
         btnActualizar.setEnabled(false);
         btnActualizar.addActionListener(new ActionListener() {
         	public void actionPerformed(java.awt.event.ActionEvent evt) {
-        		jbtnActualizar_1ActionPerformed(evt);
-        		btnActualizar.setEnabled(false);
-        		jButton2.setEnabled(false);
-        		btnNewButton_1.setEnabled(false);
-        	        	       
+        		jbtnActualizar_1ActionPerformed(evt);        		       	        	       
         	}
         });
 
@@ -250,8 +267,12 @@ public class GUI extends javax.swing.JFrame {
     }
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try{
+        	
+        	
+			//c++;
             int id = Integer.parseInt(jTFId.getText());
-            Persona persona = new Persona(""+id,jTFnombre.getText()
+            //int id=c;
+        	Persona persona = new Persona(""+id,jTFnombre.getText()
                     ,jTFedad.getText());
             
             operaciones.guardarUsuario(persona);
@@ -292,26 +313,28 @@ public class GUI extends javax.swing.JFrame {
     	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a Actualizar: "));
     	int op;
     	if(operaciones.validar(id)==true){
-    		
     		op = Integer.parseInt(JOptionPane.showInputDialog("OP1: ID \n"+"OP2: NOMBRE \n"+"OP3: EDAD \n"));
     		switch (op){
     		case 1:
     			int id_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nuevo id"));
     			operaciones.insertar("UPDATE Persona SET id = "+id_1+" WHERE ID ="+ id);
+    			 jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	    break;
     		case 2:
     			String name =JOptionPane.showInputDialog("Ingrese su nuevo nombre");
     			operaciones.insertar("UPDATE Persona SET nombre = "+"'"+name+"'"+" WHERE ID ="+ id);
+    			jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     		break;
     		case 3:
     			int edad_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nueva edad"));
     			operaciones.insertar("UPDATE Persona SET edad = "+edad_1+" WHERE ID ="+ id);
+    			jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	    break;
-    		}	
-    	}
+    		}    		
+    }
     	
     	else
     		JOptionPane.showMessageDialog(null, "Registro no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);
