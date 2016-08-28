@@ -9,7 +9,7 @@ package Operaciones;
 * @author Anthony Hernandez
 */
 
-import Objetos.Persona;    
+import Objetos.Objeto;    
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -56,17 +56,18 @@ public class Operaciones extends Conexion{
         return resultado;
     }
 
-    public void guardarUsuario(Persona persona){  
-    	insertar("insert into Persona values("+persona.getId()
-                    +",'"+persona.getnombre()
-                    +"','"+persona.getedad()+"')");
+    public void guardarUsuario(Objeto Objeto){  
+    	insertar("insert into Objeto values("+Objeto.getId()
+                    +",'"+Objeto.getnombre()
+                    +"',"+Objeto.getStock()
+                    +",'"+Objeto.getFecha()+"')");
     } 
   
-    public void totalPersonas(DefaultTableModel tableModel){
+    public void totalObjetos(DefaultTableModel tableModel){
         ResultSet resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(0);
-        String sql = "select * from Persona";
+        String sql = "select * from Objeto";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -105,12 +106,12 @@ public class Operaciones extends Conexion{
     public void consultar1(String id_1){
         ResultSet resultado = null;
         
-        String sql = "select * from Persona where id=";
+        String sql = "select * from Objeto where id=";
         try {
             resultado = consultar(sql+id_1);
             
                 while(resultado.next()){
-                	 JOptionPane.showMessageDialog(null,("Nombre = " + resultado.getString("nombre")+"\n"+("Id = " + resultado.getInt("id")+"\n"+("Edad = " + resultado.getInt("edad")))));
+                	 JOptionPane.showMessageDialog(null,("Nombre = " + resultado.getString("nombre")+"\n"+("Id = " + resultado.getInt("id")+"\n"+("Stock = " + resultado.getInt("stock")+"\n"+("Fecha = " + resultado.getString("fecha"))))));
                     
                 }
             
@@ -140,7 +141,7 @@ public class Operaciones extends Conexion{
         ResultSet resultado = null;
         conectar();
         try {
-            resultado = consultar("select * from Persona where id="+id);
+            resultado = consultar("select * from Objeto where id="+id);
         	
         	 while(resultado.next()){
         		 if(id==resultado.getInt("id")){

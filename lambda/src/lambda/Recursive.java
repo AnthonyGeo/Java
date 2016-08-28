@@ -1,17 +1,16 @@
 package lambda;
 
-import java.util.function.UnaryOperator;
 
-public class Recursive<I> {
+
+public class Recursive {
+	int n1;
+	int n2; 
 	
- public void factorial(int n) {
-	 UnaryOperator<Integer>[] fac = new UnaryOperator[1];
-     fac[0] = i -> i == 0 ? 1 : i * fac[0].apply( i - 1);
-
-     UnaryOperator<Integer> factorial = fac[0];
-     
-     System.out.println("Factorial de -> "+Integer.toString(n)+" es:");
-     System.out.println(factorial.apply(n));
+	Recursive(int n1 , int n2){
+		this.n1=n1;
+		this.n2=n2; 
+		
 	}
+ public double porcentaje()  { return (double)  (n1/n2)*100;}
 }
 

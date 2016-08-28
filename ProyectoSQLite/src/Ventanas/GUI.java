@@ -4,7 +4,7 @@
  */
 package Ventanas;
 
-import Objetos.Persona;    
+import Objetos.Objeto;    
 import Operaciones.Operaciones;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +18,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -67,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("Edad:");
+        jLabel3.setText("Stock");
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +100,12 @@ public class GUI extends javax.swing.JFrame {
         	}
         });
         btnNewButton_2.setIcon(new ImageIcon("F:\\P.O.O\\Java_clase\\ProyectoSQLite\\botoninfo.jpg"));
+        
+        JLabel JLabel4 = new JLabel();
+        JLabel4.setText("Fecha");
+        
+        fecha = new JTextField();
+        fecha.setColumns(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -105,23 +113,25 @@ public class GUI extends javax.swing.JFrame {
         		.addGroup(jPanel1Layout.createSequentialGroup()
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(122)
+        					.addComponent(jBGuardar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+        					.addGap(62)
+        					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+        					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addContainerGap()
         					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
         						.addComponent(jLabel2)
         						.addComponent(jLabel1)
-        						.addComponent(jLabel3))
-        					.addGap(18)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        						.addComponent(jTFedad, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-        						.addComponent(jTFId, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-        						.addComponent(jTFnombre, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)))
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(122)
-        					.addComponent(jBGuardar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-        					.addGap(60)
-        					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-        					.addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-        					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
+        						.addComponent(jLabel3)
+        						.addComponent(JLabel4, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
+        					.addGap(10)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jTFedad, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+        						.addComponent(jTFId, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+        						.addComponent(jTFnombre, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+        						.addComponent(fecha, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))))
         			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,17 +149,21 @@ public class GUI extends javax.swing.JFrame {
         			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel3)
         				.addComponent(jTFedad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        			.addGap(33)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(JLabel4)
+        				.addComponent(fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(54)
+        					.addGap(18)
         					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jBGuardar)
         						.addComponent(btnNewButton))
-        					.addContainerGap(58, Short.MAX_VALUE))
-        				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        					.addContainerGap(41, Short.MAX_VALUE))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-        					.addGap(30))))
+        					.addContainerGap())))
         );
         jPanel1.setLayout(jPanel1Layout);
 
@@ -239,7 +253,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel2.setLayout(jPanel2Layout);
 
-        jTabbedPane1.addTab("Lista de personas", jPanel2);
+        jTabbedPane1.addTab("Lista", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,6 +278,7 @@ public class GUI extends javax.swing.JFrame {
         jTFId.setText("");
         jTFnombre.setText("");
         jTFedad.setText("");
+        fecha.setText("");
     }
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try{
@@ -272,8 +287,8 @@ public class GUI extends javax.swing.JFrame {
 			//c++;
             int id = Integer.parseInt(jTFId.getText());
             //int id=c;
-        	Persona persona = new Persona(""+id,jTFnombre.getText()
-                    ,jTFedad.getText());
+        	Objeto persona = new Objeto(""+id,jTFnombre.getText()
+                    ,jTFedad.getText(),fecha.getText());
             
             operaciones.guardarUsuario(persona);
             JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO","AVISO",JOptionPane.INFORMATION_MESSAGE);
@@ -284,7 +299,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed 
-    	operaciones.totalPersonas((DefaultTableModel)jTPersonas.getModel());
+    	operaciones.totalObjetos((DefaultTableModel)jTPersonas.getModel());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -292,8 +307,8 @@ public class GUI extends javax.swing.JFrame {
     	if(operaciones.validar(id)==true){
         int op = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro de la base de datos?", "Atencion",JOptionPane.YES_NO_OPTION);
         if(op == JOptionPane.YES_NO_OPTION){
-        operaciones.insertar("delete from Persona where id="+id);
-        operaciones.totalPersonas((DefaultTableModel)jTPersonas.getModel());
+        operaciones.insertar("delete from Objeto where id="+id);
+        operaciones.totalObjetos((DefaultTableModel)jTPersonas.getModel());
         JOptionPane.showMessageDialog(null, "Registro eliminado con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	}
     	}
@@ -313,23 +328,29 @@ public class GUI extends javax.swing.JFrame {
     	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a Actualizar: "));
     	int op;
     	if(operaciones.validar(id)==true){
-    		op = Integer.parseInt(JOptionPane.showInputDialog("OP1: ID \n"+"OP2: NOMBRE \n"+"OP3: EDAD \n"));
+    		op = Integer.parseInt(JOptionPane.showInputDialog("OP1: ID \n"+"OP2: NOMBRE \n"+"OP3: STOCK \n"+"OP4: FECHA \n"));
     		switch (op){
     		case 1:
     			int id_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nuevo id"));
-    			operaciones.insertar("UPDATE Persona SET id = "+id_1+" WHERE ID ="+ id);
+    			operaciones.insertar("UPDATE Objeto SET id = "+id_1+" WHERE ID ="+ id);
     			 jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	    break;
     		case 2:
     			String name =JOptionPane.showInputDialog("Ingrese su nuevo nombre");
-    			operaciones.insertar("UPDATE Persona SET nombre = "+"'"+name+"'"+" WHERE ID ="+ id);
+    			operaciones.insertar("UPDATE Objeto SET nombre = "+"'"+name+"'"+" WHERE ID ="+ id);
     			jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     		break;
     		case 3:
-    			int edad_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nueva edad"));
-    			operaciones.insertar("UPDATE Persona SET edad = "+edad_1+" WHERE ID ="+ id);
+    			int edad_1 =Integer.parseInt(JOptionPane.showInputDialog("Ingrese su nueva cantidad"));
+    			operaciones.insertar("UPDATE Objeto SET stock = "+edad_1+" WHERE ID ="+ id);
+    			jButton1ActionPerformed(evt);
+    			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
+    	    break;
+    		case 4:
+    			String fecha_1 =JOptionPane.showInputDialog("Ingrese su nueva fecha");
+    			operaciones.insertar("UPDATE Objeto SET fecha = "+"'"+fecha_1+"'"+" WHERE ID ="+ id);    			
     			jButton1ActionPerformed(evt);
     			JOptionPane.showMessageDialog(null, "Informacion actualizada con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
     	    break;
@@ -396,4 +417,5 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTFedad;
     private javax.swing.JTable jTPersonas;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private JTextField fecha;
 }

@@ -36,7 +36,7 @@ public class Conexion{
 			try {           
                             conexion = DriverManager.getConnection("jdbc:sqlite:base.db");
                             consulta = conexion.createStatement();
-                        	consulta.executeUpdate("create table Persona (id integer, nombre string, edad integer)");
+                        	consulta.executeUpdate("create table Objeto (id integer, nombre string, stock integer, fecha string)");
 
 			} catch (SQLException e) {}
 			
