@@ -64,8 +64,6 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jBGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPersonas = new javax.swing.JTable();
@@ -76,69 +74,6 @@ public class GUI extends javax.swing.JFrame {
         JButton btnActualizar = new JButton("Actualizar");
         JButton btnNewButton_1 = new JButton("Consultar");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jBGuardar.setText("Importar");
-        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					jBGuardarActionPerformed(evt);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
-                btnActualizar.setEnabled(false);
-        		jButton2.setEnabled(false);
-        		btnNewButton_1.setEnabled(false);
-        		jButton1.setEnabled(true);
-            }
-        });
-        
-        JButton btnNewButton = new JButton("Salir");
-        btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		int op = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Atencion",JOptionPane.YES_NO_OPTION);
-            	if(op == JOptionPane.YES_NO_OPTION){
-            		System.exit(0);	
-            	}
-        		
-        	}
-        });
-        
-        JButton btnNewButton_2 = new JButton("");
-        btnNewButton_2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		JOptionPane.showMessageDialog(null, "Autor: Anthony Hernandez \n"+"Pontificia Universidad Catolica del Ecuador Sede Esmeraldas \n"+"Derechos de autor reservados \n"+"Anthony Company S.A","Info",JOptionPane.INFORMATION_MESSAGE);
-        	}
-        });
-        btnNewButton_2.setIcon(new ImageIcon("F:\\P.O.O\\Java_clase\\ProyectoSQLite\\botoninfo.jpg"));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1Layout.setHorizontalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap(178, Short.MAX_VALUE)
-        			.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap())
-        		.addGroup(Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-        			.addGap(142)
-        			.addComponent(jBGuardar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-        			.addGap(31)
-        			.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        			.addGap(106))
-        );
-        jPanel1Layout.setVerticalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-        			.addGap(87)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(btnNewButton)
-        				.addComponent(jBGuardar))
-        			.addGap(142))
-        );
-        jPanel1.setLayout(jPanel1Layout);
-
-        jTabbedPane1.addTab("Formulario", jPanel1);
 
         jTPersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,7 +107,12 @@ public class GUI extends javax.swing.JFrame {
         
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                try {
+					jButton2ActionPerformed(evt);
+				} catch (TransformerConfigurationException | ParserConfigurationException | SAXException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         
@@ -202,6 +142,101 @@ public class GUI extends javax.swing.JFrame {
 				}        		       	        	       
         	}
         });
+        jPanel1 = new javax.swing.JPanel();
+        jBGuardar = new javax.swing.JButton();
+        
+                jBGuardar.setText("Importar");
+                jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        try {
+					jBGuardarActionPerformed(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+                        btnActualizar.setEnabled(false);
+                		jButton2.setEnabled(false);
+                		btnNewButton_1.setEnabled(false);
+                		jButton1.setEnabled(true);
+                    }
+                });
+                
+                JButton btnNewButton = new JButton("Salir");
+                btnNewButton.addActionListener(new ActionListener() {
+                	public void actionPerformed(ActionEvent arg0) {
+                		int op = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Atencion",JOptionPane.YES_NO_OPTION);
+                    	if(op == JOptionPane.YES_NO_OPTION){
+                    		System.exit(0);	
+                    	}
+                		
+                	}
+                });
+                
+                JButton btnNewButton_2 = new JButton("");
+                btnNewButton_2.addActionListener(new ActionListener() {
+                	public void actionPerformed(ActionEvent arg0) {
+                		JOptionPane.showMessageDialog(null, "Autor: Anthony Hernandez \n"+"Pontificia Universidad Catolica del Ecuador Sede Esmeraldas \n"+"Derechos de autor reservados \n"+"Anthony Company S.A","Info",JOptionPane.INFORMATION_MESSAGE);
+                	}
+                });
+                btnNewButton_2.setIcon(new ImageIcon("F:\\P.O.O\\Java_clase\\ProyectoSQLite\\botoninfo.jpg"));
+                
+                JButton btnAgregar = new JButton("Agregar ");
+                btnAgregar.addActionListener(new ActionListener() {
+                	public void actionPerformed(ActionEvent arg0) {
+                		 btnActualizar.setEnabled(false);
+                 		jButton2.setEnabled(false);
+                 		btnNewButton_1.setEnabled(false);
+                 		jButton1.setEnabled(true);
+                		try{
+                	        	
+                	        	int matricula= Integer.parseInt( JOptionPane.showInputDialog("Matricula"));
+                	        	String nombre= JOptionPane.showInputDialog("Nombre");
+                	        	String direccion= JOptionPane.showInputDialog("Direccion");
+                	        	String ciudad= JOptionPane.showInputDialog("Ciudad");
+                	        	int edad= Integer.parseInt( JOptionPane.showInputDialog("Edad"));
+                	        	Objeto persona = new Objeto(""+matricula,nombre,direccion,ciudad,""+edad);
+                	            operaciones.guardarUsuario(persona);
+                	            JOptionPane.showMessageDialog(null, "AGREGADO CON EXITO","AVISO",JOptionPane.INFORMATION_MESSAGE);
+                                operaciones.xml();
+                	        }catch(Exception ex){
+                	            JOptionPane.showMessageDialog(null,"Error:"+ex.getMessage()+"\nVerifique");
+                	        }
+                	}
+                });
+                
+                        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+                        jPanel1Layout.setHorizontalGroup(
+                        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+                        		.addGroup(jPanel1Layout.createSequentialGroup()
+                        			.addContainerGap(572, Short.MAX_VALUE)
+                        			.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                        			.addContainerGap())
+                        		.addGroup(jPanel1Layout.createSequentialGroup()
+                        			.addGap(173)
+                        			.addComponent(jBGuardar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+                        			.addGap(28)
+                        			.addComponent(btnAgregar, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+                        			.addContainerGap(181, Short.MAX_VALUE))
+                        		.addGroup(jPanel1Layout.createSequentialGroup()
+                        			.addGap(247)
+                        			.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+                        			.addContainerGap(258, Short.MAX_VALUE))
+                        );
+                        jPanel1Layout.setVerticalGroup(
+                        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+                        		.addGroup(jPanel1Layout.createSequentialGroup()
+                        			.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                        			.addGap(87)
+                        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+                        				.addComponent(btnAgregar)
+                        				.addComponent(jBGuardar))
+                        			.addGap(31)
+                        			.addComponent(btnNewButton)
+                        			.addGap(88))
+                        );
+                        jPanel1.setLayout(jPanel1Layout);
+                        
+                                jTabbedPane1.addTab("Formulario", jPanel1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2Layout.setHorizontalGroup(
@@ -214,10 +249,10 @@ public class GUI extends javax.swing.JFrame {
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+        					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
         					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
-        				.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
+        					.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
+        				.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE))
         			.addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -310,7 +345,7 @@ public class GUI extends javax.swing.JFrame {
     	operaciones.totalObjetos((DefaultTableModel)jTPersonas.getModel());
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) throws TransformerConfigurationException, ParserConfigurationException, SAXException {//GEN-FIRST:event_jButton2ActionPerformed
     	int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id a eliminar: "));
     	if(operaciones.validar(id)==true){
         int op = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro de la base de datos?", "Atencion",JOptionPane.YES_NO_OPTION);
@@ -318,7 +353,8 @@ public class GUI extends javax.swing.JFrame {
         operaciones.insertar("delete from Objeto where matricula="+id);
         operaciones.totalObjetos((DefaultTableModel)jTPersonas.getModel());
         JOptionPane.showMessageDialog(null, "Registro eliminado con exito","AVISO",JOptionPane.INFORMATION_MESSAGE);
-    	}
+        operaciones.xml();
+        }
     	}
     	else
     		JOptionPane.showMessageDialog(null, "Registro no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);

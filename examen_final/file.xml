@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><list>
     <Alumno>
-        <matricula>9846</matricula>
-        <nombres>Anthony H</nombres>
-        <direccion>Nuevo Mexico</direccion>
-        <ciudad>Esmeraldas</ciudad>
-        <edad>20</edad>
-    </Alumno>
-    <Alumno>
         <matricula>5698</matricula>
-        <nombres>Carlos Mideros</nombres>
+        <nombres>Genesis Burgos</nombres>
         <direccion>Barrio Alto</direccion>
         <ciudad>Quininde</ciudad>
         <edad>17</edad>
@@ -68,5 +61,12 @@
         <direccion>Los delfines</direccion>
         <ciudad>Guayaquil</ciudad>
         <edad>16</edad>
+    </Alumno>
+    <Alumno>
+        <matricula>9846</matricula>
+        <nombres>Anthony Hernandez</nombres>
+        <direccion>Nuevo Mexico</direccion>
+        <ciudad>Esmeraldas</ciudad>
+        <edad>20</edad>
     </Alumno>
 </list>
